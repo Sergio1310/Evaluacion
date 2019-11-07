@@ -223,4 +223,12 @@ html,body {
 	.modal form label {
 		font-weight: normal;
 	}	
-</style>
+	#inputIDeliminar{
+		display: none;
+	}
+	#modalIDeliminar{
+		display: none;
+	}
+	#inputIDeditar{
+		display: none;
+	}

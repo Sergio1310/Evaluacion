@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\preguntaUserModel;
 
 class UserController extends Controller
 {
@@ -22,7 +23,8 @@ class UserController extends Controller
         return view('Administrador.usuarios');
     }
     public function AdministradorPreguntas(){
-        return view('Administrador.preguntas');
+        $asignaturas = preguntaUserModel::obtenerAsignaturas();
+        return view('Administrador.preguntas', compact('asignaturas'));
     }
     public function menu(){
         return view('menu');

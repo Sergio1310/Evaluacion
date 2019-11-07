@@ -16,9 +16,13 @@ class LoginController extends Controller
     	$datos_Usuario = json_decode($var);
     	
     	if($datos_Usuario[0]->tipouser_Idtipouser == 1){
+            session('matricula') = $datos_Usuario[0]->userr;
+            session('tipo_user') = $datos_Usuario[0]->tipouser_Idtipouser;
     		return redirect('/administrador/menu');
     	}
     	if($datos_Usuario[0]->tipouser_Idtipouser == 2){
+            session('matricula') = $datos_Usuario[0]->userr;
+            session('tipo_user') = $datos_Usuario[0]->tipouser_Idtipouser;
     		return redirect('/alumno/menu');
     	}
     }

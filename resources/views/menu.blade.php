@@ -9,7 +9,7 @@
              
     <div id="separar">
 	    <br/>
-	    <span class="botonU"><a href="/administrador/preguntas">Usuarios</a></span>
+	    <span class="botonU"><a href="/administrador/usuarios">Usuarios</a></span>
     </div>
         		<div id="separar">
    					<br/>

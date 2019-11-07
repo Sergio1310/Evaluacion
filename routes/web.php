@@ -22,3 +22,17 @@ Route::get('/administrador/usuarios', 'UserController@AdministradorUsuarios');
 Route::get('/administrador/preguntas', 'UserController@AdministradorPreguntas');
 
 Route::post('verificarLogin', 'LoginController@verificarUsuario')->name('verificar.login');
+
+Route::get('administrador/TablaUsuarios', 'matriculasController@MostrarTablaUsuarios');
+
+Route::get('insertarMatricula', 'matriculasController@insertarMatricula')->name('insert.Matricula');
+
+Route::get('administrador/TablaPreguntas', 'preguntaUserController@MostrarTablaPreguntas');
+
+Route::get('insertarPregunta', 'preguntaUserController@insertarPregunta')->name('insert.Pregunta');
+
+Route::get('editarPregunta', 'preguntaUserController@editarPregunta')->name('editar.Pregunta');
+
+Route::get('eliminarPregunta', 'preguntaUserController@eliminarPregunta')->name('eliminar.Pregunta');
+
+Route::get('buscarPregunta', 'preguntaUserController@buscarPregunta')->name('buscar.Pregunta');

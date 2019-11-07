@@ -7,7 +7,7 @@
 			<div class="card" >
 				<div class="card-body d-flex justify-content-between align-items-center"  >
 					<input type="text" class="form-control pull-right" style="width:70%;" id="search" placeholder="Buscar Matricula">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AgregarMatricula" >Agregar Matricula</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AgregarMatricula">Agregar Matricula</button>
 				</div>
 			</div>
 		</div>
@@ -25,84 +25,41 @@
       </div>
       <div class="modal-body">
           <div class="input-group mb-3">
-		    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Matricula">
+		    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Matricula" id="input_matricula">
 	      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary"  id="guardarMatricula">Guardar</button>
       </div>
     </div>
   </div>
 </div>
-<div style="padding: 1% 15%" class="card-body d-flex justify-content-between align-items-center">
-    <!--Table-->
-	<table class="table-bordered table pull-right" id="mytable"  style="background-color: rgba(0,0,0,0.7)">
-	  <!--Table body-->
-	  <tbody>
-	   <thead>
-		<tr role="row">
-		 	<th colspan="6" style="text-align: center; color: white">Matricula</th>
-		</tr>
-	 </thead>
-	    <tr>
-	      
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700074</a></td>
-	        <td><a href="">201700073</a></td>
-	        <td><a href="">201700072</a></td>
-	        <td><a href="">201700071</a></td>
-	        <td><a href="">201700070</a></td>
-	    </tr>
-	    <tr>
-	      
-	       <td><a href="">201700069</a></td>
-	        <td><a href="">201700068</a></td>
-	        <td><a href="">201700067</a></td>
-	        <td><a href="">201700066</a></td>
-	        <td><a href="">201700065</a></td>
-	        <td><a href="">201700064</a></td>
-	    </tr>
-	    <tr>
-	      
-	      <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	    </tr>
-	    <tr>
-	      <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	    </tr>
-	    <tr>
-	      
-	       <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	    </tr>
-	    <tr>
-	      
-	       <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	        <td><a href="">201700075</a></td>
-	    </tr>
-	  </tbody>
-	  <!--Table body-->
-	</table>
-	<!--Table-->
-</div>
 
+<div id="tabla_usuarios"></div>
+
+<script>
+	$('#tabla_usuarios').load('/administrador/TablaUsuarios');
+
+	$('#guardarMatricula').on('click', function(){
+		var matricula = $('#input_matricula').val();
+	    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	    var route = "{{route('insert.Matricula')}}";
+		
+		$.ajax({
+			url: route,
+			type: 'get',
+			data: {_token: CSRF_TOKEN, matricula: matricula},
+			success:function(data){
+			 	if(data == 1){
+			 		$('#tabla_usuarios').load('/administrador/TablaUsuarios');
+			 		alert("Se inserto aca bien vergas.");
+			 	}else{
+			 		alert("La matricula ya existe.");
+			 	}
+			}
+		});
+	});
+</script>
 
 @endsection

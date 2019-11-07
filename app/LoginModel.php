@@ -9,8 +9,8 @@ class LoginModel extends Model
 {
     public static function validarUsuario($datos){
     	return \DB::table('usuarios as users')
-    	->where('users.user', $datos['usuario'])
-    	->where('users.password', $datos['password'])
+    	->where('users.userr', $datos['usuario'])
+    	->where('users.contra', $datos['password'])
     	->get();
     }
 }
